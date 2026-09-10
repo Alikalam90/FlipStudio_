@@ -1,0 +1,1145 @@
+/* src/pages/ServiceDetailPage.css */
+@font-face {
+  font-family: "Gogh";
+  src: url("../assets/fonts/Gogh-ExtraBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueHaasDisplayBold";
+  src: url("../assets/fonts/NeueHaasDisplayThin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NeueHaasDisplayPro";
+  src: url("../assets/fonts/NeueHaasDisplayPro.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CreatoDisplay-Regular";
+  src: url("../assets/fonts/CreatoDisplay-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CreatoDisplay-Light";
+  src: url("../assets/fonts/CreatoDisplay-Light.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "helveticaneuecyr";
+  src: url("../assets/fonts/helveticaneuecyr_thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.service-detail-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  letter-spacing: -0.02em;
+}
+
+/* Loading State */
+.service-detail-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================ */
+/* ENHANCED: Bordered & Blurry Button Styles */
+/* Applies to ALL buttons on the page */
+/* ============================================ */
+
+button:not(.indicator),
+.button-86,
+.view-service,
+.cta-primary,
+.cta-secondary,
+.back-btn,
+.lets-talk-btn,
+.cta-button,
+.service-cta button:not(.indicator),
+.related-services button:not(.indicator),
+.service-benefits button:not(.indicator),
+.service-details button:not(.indicator),
+.service-process button:not(.indicator),
+.service-hero button:not(.indicator) {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  font-family: "Gogh", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  height: 38px !important;
+  padding: 0 15px !important;
+  white-space: nowrap !important;
+  pointer-events: auto !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  text-transform: uppercase !important;
+  line-height: normal !important;
+  text-decoration: none !important;
+  gap: 8px !important;
+}
+
+/* Button inner content wrapper for animation */
+.button-86 > span,
+.cta-primary > span,
+.cta-secondary > span,
+.view-service > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Add plus symbol to all buttons that don't have one - stays on the RIGHT */
+.button-86 > span::after,
+.cta-primary > span::after,
+.cta-secondary > span::after,
+.view-service > span::after {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 300;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-left: 4px;
+}
+
+/* Hover animation for plus symbol - rotates to X, background turns white, icon black */
+.button-86:hover > span::after,
+.cta-primary:hover > span::after,
+.cta-secondary:hover > span::after,
+.view-service:hover > span::after {
+  background: #ffffff;
+  color: #000000;
+  transform: rotate(45deg);
+}
+
+/* Remove box-shadow from all buttons */
+button,
+.button-86,
+.view-service,
+.cta-primary,
+.cta-secondary,
+.back-btn,
+.lets-talk-btn,
+.cta-button {
+  box-shadow: none !important;
+}
+
+/* Hover effects for all buttons */
+button:not(.indicator):hover,
+.button-86:hover,
+.view-service:hover,
+.cta-primary:hover,
+.cta-secondary:hover,
+.back-btn:hover,
+.lets-talk-btn:hover,
+.cta-button:hover,
+.service-cta button:not(.indicator):hover,
+.related-services button:not(.indicator):hover,
+.service-benefits button:not(.indicator):hover,
+.service-details button:not(.indicator):hover,
+.service-process button:not(.indicator):hover,
+.service-hero button:not(.indicator):hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  outline: none !important;
+  transform: translateY(0) !important;
+}
+
+/* Active state for all buttons */
+button:not(.indicator):active,
+.button-86:active,
+.view-service:active,
+.cta-primary:active,
+.cta-secondary:active,
+.back-btn:active,
+.lets-talk-btn:active,
+.cta-button:active {
+  color: #fff !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Focus state */
+button:not(.indicator):focus,
+.button-86:focus,
+.view-service:focus,
+.cta-primary:focus,
+.cta-secondary:focus,
+.back-btn:focus,
+.lets-talk-btn:focus,
+.cta-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Force indicators to be circles - override any button styles */
+.indicator,
+.indicator.active,
+.indicator:hover,
+button.indicator,
+button.indicator:hover,
+button.indicator:active,
+button.indicator:focus {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  max-width: 8px !important;
+  min-height: 8px !important;
+  max-height: 8px !important;
+  padding: 0 !important;
+  margin: 0 6px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  text-transform: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  letter-spacing: normal !important;
+  transform: none !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+}
+
+button.indicator::before,
+button.indicator::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Specific override for indicator dots - normal size circular dots */
+.indicator {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  max-width: 8px !important;
+  min-height: 8px !important;
+  max-height: 8px !important;
+  padding: 0 !important;
+  margin: 0 6px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+}
+
+.indicator::before,
+.indicator::after {
+  display: none !important;
+  content: none !important;
+}
+
+.indicator.active {
+  background: #ffffff !important;
+  width: 8px !important;
+  height: 8px !important;
+  transform: scale(1.2) !important;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.3) !important;
+}
+
+.service-detail-page .indicator,
+.service-detail-page .indicator.active,
+.service-detail-page .indicator:hover {
+  border-bottom-left-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+  border-top-left-radius: 50% !important;
+  border-top-right-radius: 50% !important;
+}
+
+/* COMPLETE OVERRIDE - Ensure indicators are perfect circles */
+.slide-indicators .indicator,
+.slide-indicators button.indicator {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  max-width: 8px !important;
+  min-height: 8px !important;
+  max-height: 8px !important;
+  padding: 0 !important;
+  margin: 0 6px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+}
+
+.slide-indicators .indicator.active,
+.slide-indicators button.indicator.active {
+  background: #ffffff !important;
+  transform: scale(1.2) !important;
+}
+
+.slide-indicators .indicator:hover,
+.slide-indicators button.indicator:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.3) !important;
+}
+
+/* Remove unwanted global border-radius but keep indicators circular */
+.service-detail-page
+  *:not(.indicator):not(.indicator.active):not(.indicator:hover) {
+  border-radius: 0 !important;
+}
+
+/* Ensure back button specific styles don't conflict */
+.back-btn {
+  margin-left: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Keep original back-btn-content structure for compatibility */
+.back-btn-content,
+.lets-talk-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Plus Container - stays on RIGHT for back button */
+.back-plus-container,
+.plus-container {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.back-btn:hover .back-plus-container {
+  background: #ffffff;
+}
+
+.back-plus-icon,
+.plus-icon {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 300;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  line-height: 1;
+}
+
+.back-btn:hover .back-plus-icon {
+  color: #000000;
+  transform: rotate(45deg);
+}
+
+/* Text Container for back button */
+.back-btn-text-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.back-btn-text,
+.back-services-text {
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.back-services-text {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.back-btn .back-btn-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.back-btn:hover .back-btn-text {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.back-btn:hover .back-services-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================ */
+/* End of Button Styles */
+/* ============================================ */
+
+/* Navigation Header */
+.service-detail-header {
+  padding: 100px 0 0;
+  background: #000;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Gogh", sans-serif;
+  letter-spacing: 1.5em;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #9c9b9b;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.breadcrumb a {
+  color: #9c9b9b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.breadcrumb a:hover {
+  color: #fff;
+}
+
+.breadcrumb .current {
+  color: #fff;
+  font-weight: 600;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Hero Section */
+.service-hero {
+  padding: 80px 0;
+  letter-spacing: -0.02em;
+}
+
+.service-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.service-hero-content {
+  position: relative;
+}
+
+.service-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bolder;
+  margin-bottom: 0px;
+  margin-top: -85px;
+  background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: none;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  font-family: "Gogh", sans-serif;
+  text-transform: uppercase;
+}
+
+.service-hero-description {
+  word-spacing: -0.04em;
+  font-size: 1.2rem;
+  line-height: 1.1;
+  color: #ccc;
+  margin-bottom: 20px;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: bold;
+}
+
+.service-hero-description p {
+  font-weight: 10;
+}
+
+.service-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.meta-item {
+  text-align: center;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  margin-bottom: 0px;
+  font-family: "Gogh", sans-serif;
+  font-weight: normal;
+  text-align: left;
+}
+
+.meta-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+/* Hero Visual */
+.service-hero-visual {
+  position: relative;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.main-image-container {
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 50% !important;
+}
+
+.main-service-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: opacity 0.8s ease-in-out;
+  border-radius: 50% !important;
+}
+
+/* Auto-slide Indicators */
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Our Services Section Wrapper */
+.our-services-section-wrapper {
+  padding: 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Process Section */
+.service-process {
+  padding: 100px 0;
+  background: rgba(255, 255, 255, 0.02);
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 0.7;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: "helveticaneuecyr", sans-serif;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+
+.process-steps {
+  display: grid;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.process-step {
+  position: relative;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.process-step:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.step-number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 15px;
+  line-height: 1;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.step-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.step-line {
+  width: 60px;
+  height: 2px;
+  background: #fff;
+}
+
+/* Benefits Section */
+.service-benefits {
+  padding: 100px 0;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.benefits-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: -150px;
+  margin-bottom: -6px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: "Gogh", sans-serif;
+}
+
+.benefits-content > p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 10px;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: #fff;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+
+.benefit-check {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  font-family: "helveticaneuecyr", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.benefits-visual img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+/* Service Details */
+.service-details {
+  padding: 100px 0;
+  background: rgba(255, 255, 255, 0.02);
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.detail-section h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-family: "Gogh", sans-serif;
+}
+
+.team-list,
+.deliverables-list {
+  list-style: none;
+  padding: 0;
+}
+
+.team-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  font-size: 1rem;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: 0em;
+  font-weight: 300;
+}
+
+.deliverables-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  font-size: 1rem;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: 0em;
+  font-weight: 300;
+}
+
+.team-list li:last-child,
+.deliverables-list li:last-child {
+  border-bottom: none;
+}
+
+.tags-container {
+  display: grid;
+  width: fit-content;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.service-tag {
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  border: none;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  text-align: left;
+  margin-left: -14px;
+}
+
+/* Related Services */
+.related-services {
+  padding: 100px 0;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.related-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.related-service-card {
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  height: 400px;
+  overflow: hidden;
+}
+
+.related-service-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-10px);
+}
+
+.related-service-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.related-service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.related-service-card:hover img {
+  filter: brightness(0.6);
+}
+
+.related-service-content {
+  padding: 25px;
+}
+
+.related-service-content h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: "helveticaneuecyr", sans-serif;
+}
+
+.related-service-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-family: "CreatoDisplay-Light", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+
+/* CTA Section */
+.service-cta {
+  padding: 100px 0;
+  background: #000;
+  text-align: center;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: 0;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: "Gogh", sans-serif;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Gogh", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+  .service-hero-grid,
+  .benefits-grid {
+    gap: 40px;
+  }
+
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .related-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb-nav {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .service-hero-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .service-hero-meta {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-service-image {
+    height: 300px;
+  }
+
+  button,
+  .button-86,
+  .view-service,
+  .cta-primary,
+  .cta-secondary,
+  .back-btn,
+  .lets-talk-btn,
+  .cta-button {
+    height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 11px !important;
+  }
+
+  .back-plus-container,
+  .plus-container {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .back-plus-icon,
+  .plus-icon {
+    font-size: 13px !important;
+  }
+
+  .our-services-section-wrapper {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .service-hero-title {
+    font-size: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .process-step {
+    padding: 25px;
+  }
+
+  .slide-indicators {
+    gap: 8px;
+  }
+
+  .indicator {
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
+    max-width: 8px !important;
+    min-height: 8px !important;
+    max-height: 8px !important;
+    margin: 0 5px !important;
+    border-radius: 50% !important;
+  }
+
+  button,
+  .button-86,
+  .view-service,
+  .cta-primary,
+  .cta-secondary,
+  .back-btn,
+  .lets-talk-btn,
+  .cta-button {
+    height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 9px !important;
+  }
+
+  .back-plus-container,
+  .plus-container {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .back-plus-icon,
+  .plus-icon {
+    font-size: 11px !important;
+  }
+
+  .cta-buttons {
+    gap: 15px;
+  }
+
+  .our-services-section-wrapper {
+    padding: 40px 0;
+  }
+}
+
+/* Ensure all buttons have white text and proper styling */
+button,
+.button-86,
+.button-86:hover,
+.button-86:focus,
+.button-86:active,
+.cta-button,
+.cta-button:hover,
+.view-service,
+.view-service:hover,
+.cta-primary,
+.cta-primary:hover,
+.cta-secondary,
+.cta-secondary:hover,
+.back-btn,
+.back-btn:hover,
+.lets-talk-btn,
+.lets-talk-btn:hover {
+  color: #fff !important;
+}
+
+/* Override any remaining box-shadow from original classes */
+.button-86,
+.view-service,
+.cta-primary,
+.cta-secondary {
+  box-shadow: none !important;
+}
+
+.button-86:active,
+.view-service:active,
+.cta-primary:active,
+.cta-secondary:active {
+  box-shadow: none !important;
+  color: #fff !important;
+}
