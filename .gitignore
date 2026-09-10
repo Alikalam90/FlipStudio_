@@ -9,7 +9,6 @@ lerna-debug.log*
 
 # Large video files
 src/assets/video.mov
-src/assets/homeherovid.mp4
 src/assets/preloader-vid2.mp4
 *.avi
 *.mkv
